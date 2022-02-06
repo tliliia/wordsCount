@@ -15,6 +15,9 @@ public class HTMLTextSource implements TextSource {
     private final String url;
 
     public HTMLTextSource(@Value(value = "${url}") String url) {
+        if (url == null) {
+            throw new IllegalArgumentException("Не верный адрес сайта");
+        }
         this.url = url;
     }
 

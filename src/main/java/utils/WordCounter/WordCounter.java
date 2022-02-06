@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface WordCounter {
     /**
-     * Анализировать вхождения слов
+     * Получиьт статистику по используемым в тексте словам
      * @param text анализируемый текст
      */
     void processText(String text);
