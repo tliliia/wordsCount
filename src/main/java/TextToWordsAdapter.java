@@ -6,9 +6,13 @@ import java.util.*;
 public class TextToWordsAdapter {
 
     public static List<String> getWords(String sourceText) {
+        if (sourceText == null) {
+            throw new IllegalArgumentException("Нет входного текста");
+        }
         String delimiters = delimitersFromProperties().isPresent() ? delimitersFromProperties().get() : " ";
         String[] splitted = sourceText.split(delimiters);
-        List<String> words = Arrays.asList(splitted);
+        List<String> words = new ArrayList<>();
+        words.addAll(Arrays.asList(splitted));
         words.removeIf(word -> word.isBlank());
         return words;
     }

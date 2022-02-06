@@ -19,14 +19,27 @@ public class StatisticServiceImpl {
 
     public void doWork() {
         log.debug("Получение текста");
-        String sourceText = textSource.getText();
+        String sourceText = null;
+        try {
+            sourceText = textSource.getText();
+        } catch (Exception e) {
+            log.error("Получение текста", e);
+        }
 
         log.debug("Проведение статистики");
-        List<String> words = TextToWordsAdapter.getWords(sourceText);
-        words.forEach(word -> wordCounter.processWord(word));
+        try {
+            List<String> words = TextToWordsAdapter.getWords(sourceText);
+            words.forEach(word -> wordCounter.processWord(word));
+        } catch (Exception e) {
+            log.error("Проведение статистики", e);
+        }
 
         log.debug("Сохранение результата");
-        saver.saveResult(wordCounter.getStatictics());
+        try {
+            saver.saveResult(wordCounter.getStatictics());
+        } catch (Exception e) {
+            log.error("Сохранение результата", e);
+        }
     }
 
 }

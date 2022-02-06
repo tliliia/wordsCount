@@ -8,6 +8,7 @@ public class Program {
                 new HTMLTextSource(args[0]),
                 new HashMapWordCounter(),
                 new FileResultSaver("out.txt"));
+        service.doWork();
     }
 
 }
