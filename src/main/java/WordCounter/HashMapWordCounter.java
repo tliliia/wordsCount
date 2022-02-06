@@ -1,4 +1,9 @@
+package WordCounter;
+
+import Utils.TextToWordsAdapter;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HashMapWordCounter implements WordCounter {
@@ -8,7 +13,7 @@ public class HashMapWordCounter implements WordCounter {
         this.wordsOccurrences = new HashMap<>();
     }
 
-    public void processWord(String word) {
+    private void processWord(String word) {
         String wordLowerCase = word.toLowerCase();
         if (wordsOccurrences.containsKey(wordLowerCase)) {
             wordsOccurrences.put(wordLowerCase, wordsOccurrences.get(wordLowerCase) + 1);
@@ -17,6 +22,14 @@ public class HashMapWordCounter implements WordCounter {
         }
     }
 
+    @Override
+    public void processText(String sourceText) {
+        List<String> words = TextToWordsAdapter.getWords(sourceText);
+        words.forEach(word -> processWord(word));
+
+    }
+
+    @Override
     public Map<String, Integer> getStatictics() {
         return wordsOccurrences;
     }

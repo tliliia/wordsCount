@@ -1,8 +1,13 @@
+package Utils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+/**
+ * Класс для преобразования входного текста в список слов
+ */
 public class TextToWordsAdapter {
 
     public static List<String> getWords(String sourceText) {

@@ -1,7 +1,10 @@
+import ResultSaver.ResultSaver;
+import TextSource.TextSource;
+import Utils.TextToWordsAdapter;
+import WordCounter.WordCounter;
 import org.apache.log4j.Logger;
 
 import java.util.List;
-import java.util.Map;
 
 public class StatisticServiceImpl {
     Logger log = Logger.getLogger(StatisticServiceImpl.class.getName());
@@ -19,20 +22,10 @@ public class StatisticServiceImpl {
 
     public void doWork() {
         log.debug("Получение текста");
-        String sourceText = null;
-        try {
-            sourceText = textSource.getText();
-        } catch (Exception e) {
-            log.error("Получение текста", e);
-        }
+        String sourceText = sourceText = textSource.getText();
 
         log.debug("Проведение статистики");
-        try {
-            List<String> words = TextToWordsAdapter.getWords(sourceText);
-            words.forEach(word -> wordCounter.processWord(word));
-        } catch (Exception e) {
-            log.error("Проведение статистики", e);
-        }
+        wordCounter.processText(sourceText);
 
         log.debug("Сохранение результата");
         try {
