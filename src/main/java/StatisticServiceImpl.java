@@ -1,5 +1,6 @@
 import org.apache.log4j.Logger;
 
+import java.util.List;
 import java.util.Map;
 
 public class StatisticServiceImpl {
@@ -21,12 +22,8 @@ public class StatisticServiceImpl {
         String sourceText = textSource.getText();
 
         log.debug("Проведение статистики");
-        String[] words = TextToWordsAdapter.getWords(sourceText);
-        for(String word : words) {
-            if (!word.isBlank()) {
-                wordCounter.processWord(word);
-            }
-        }
+        List<String> words = TextToWordsAdapter.getWords(sourceText);
+        words.forEach(word -> wordCounter.processWord(word));
 
         log.debug("Сохранение результата");
         saver.saveResult(wordCounter.getStatictics());

@@ -1,16 +1,28 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 public class TextToWordsAdapter {
 
-    public static String[] getWords(String sourceText) {
-        List<String> words = new ArrayList<>();
-        String[] splitted = sourceText.split("[ ,.!?\";:\\[\\]()\\n\\r\\t]");
-        words.addAll(Arrays.asList(splitted));
-        words.removeIf(word -> word.length() == 0);
-        //todo:properties
+    public static List<String> getWords(String sourceText) {
+        String delimiters = delimitersFromProperties().isPresent() ? delimitersFromProperties().get() : " ";
+        String[] splitted = sourceText.split(delimiters);
+        List<String> words = Arrays.asList(splitted);
+        words.removeIf(word -> word.isBlank());
+        return words;
+    }
 
-        return splitted;
+    private static Optional<String> delimitersFromProperties() {
+        String delimiters = null;
+        try (InputStream input = new FileInputStream("src/main/resources/application.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            delimiters = prop.getProperty("delimiters");
+        } catch (IOException ex) {
+            throw new RuntimeException("Невозмжно получить список разделителей для слов");
+        } finally {
+            return Optional.ofNullable(delimiters);
+        }
     }
 }
