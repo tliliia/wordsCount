@@ -1,10 +1,10 @@
-import ResultSaver.FileResultSaver;
-import Service.StatisticServiceImpl;
-import TextSource.HTMLTextSource;
-import WordCounter.HashMapWordCounter;
+import services.StatisticServiceImpl;
+import utils.WordCounter.HashMapWordCounter;
 import config.AppConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {

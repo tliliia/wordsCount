@@ -1,7 +1,6 @@
-package WordCounter;
+package utils.WordCounter;
 
-import Utils.TextToWordsAdapter;
-import org.springframework.context.annotation.ComponentScan;
+import utils.TextToWordsAdapter;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

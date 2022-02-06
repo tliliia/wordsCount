@@ -7,7 +7,9 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @PropertySource(value = "classpath:application.properties")
-@ComponentScan()
+@ComponentScan("config")
+@ComponentScan("services")
+@ComponentScan("utils")
 @Component
 public class AppConfig {
     private final Environment environment;

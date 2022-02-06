@@ -1,4 +1,4 @@
-package WordCounter;
+package utils.WordCounter;
 
 import java.util.Map;
 

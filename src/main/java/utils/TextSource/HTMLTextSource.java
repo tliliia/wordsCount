@@ -1,4 +1,4 @@
-package TextSource;
+package utils.TextSource;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class HTMLTextSource implements TextSource {
     private final String url;
 
-    public HTMLTextSource(@Value(value = "@{url}") String url) {
+    public HTMLTextSource(@Value(value = "${url}") String url) {
         this.url = url;
     }
 

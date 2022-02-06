@@ -1,8 +1,8 @@
-package Service;
+package services;
 
-import ResultSaver.ResultSaver;
-import TextSource.TextSource;
-import WordCounter.WordCounter;
+import utils.ResultSaver.ResultSaver;
+import utils.TextSource.TextSource;
+import utils.WordCounter.WordCounter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
