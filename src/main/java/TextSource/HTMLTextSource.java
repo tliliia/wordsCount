@@ -5,13 +5,16 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+@Component
 public class HTMLTextSource implements TextSource {
     private final String url;
 
-    public HTMLTextSource(String url) {
+    public HTMLTextSource(@Value(value = "@{url}") String url) {
         this.url = url;
     }
 

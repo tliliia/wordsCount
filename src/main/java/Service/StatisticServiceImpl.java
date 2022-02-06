@@ -4,7 +4,10 @@ import ResultSaver.ResultSaver;
 import TextSource.TextSource;
 import WordCounter.WordCounter;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StatisticServiceImpl {
     Logger log = Logger.getLogger(StatisticServiceImpl.class.getName());
 
@@ -12,7 +15,7 @@ public class StatisticServiceImpl {
     private final WordCounter wordCounter;
     private final ResultSaver saver;
 
-
+    @Autowired
     public StatisticServiceImpl(TextSource textSource, WordCounter wordCounter, ResultSaver saver) {
         this.textSource = textSource;
         this.wordCounter = wordCounter;

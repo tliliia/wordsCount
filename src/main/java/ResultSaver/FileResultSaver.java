@@ -1,16 +1,20 @@
 package ResultSaver;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+@Component
 public class FileResultSaver implements ResultSaver {
 
     private final String fileName;
 
-    public FileResultSaver(String fileName) {
+    public FileResultSaver(@Value(value = "@{filename}") String fileName) {
         this.fileName = fileName;
     }
 

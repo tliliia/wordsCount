@@ -1,11 +1,14 @@
 package WordCounter;
 
 import Utils.TextToWordsAdapter;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class HashMapWordCounter implements WordCounter {
     private final Map<String, Integer> wordsOccurrences;
 
