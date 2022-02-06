@@ -1,8 +1,9 @@
 import ResultSaver.FileResultSaver;
+import Service.StatisticServiceImpl;
 import TextSource.HTMLTextSource;
 import WordCounter.HashMapWordCounter;
 
-public class Program {
+public class Application {
     public static void main(String[] args) {
         if(args.length < 1) {
             throw  new IllegalArgumentException("Необходимо ввести параметр URL");

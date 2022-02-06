@@ -1,10 +1,9 @@
+package Service;
+
 import ResultSaver.ResultSaver;
 import TextSource.TextSource;
-import Utils.TextToWordsAdapter;
 import WordCounter.WordCounter;
 import org.apache.log4j.Logger;
-
-import java.util.List;
 
 public class StatisticServiceImpl {
     Logger log = Logger.getLogger(StatisticServiceImpl.class.getName());
